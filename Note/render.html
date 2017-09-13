@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .bg {
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        
+    </div>
+    <script>
+        let data = {
+            message:"hello,Vue!"
+        };
+
+        var vm = new Vue({
+            el:"#demo",
+            data:{},
+            render (creatElement) {
+                return creatElement (
+                    "ul",
+                    {
+                        class: {
+                            bg:true,
+                        },
+                        style: {
+                            height:"50px",
+                        },
+                        attrs: {
+                            acc: 123,
+                        },
+                        domProps: {
+                            // 会覆盖creatElement("li",1)
+                            innerHTML: "<li> 我是HTML </li>"
+                        }
+                    },
+                    [
+                        creatElement("li",1)
+                    ]
+                )
+            },
+        });
+    </script>
+</body>
+</html>
